@@ -1,5 +1,4 @@
-use std::io;
-use std::ops::BitXor;
+
 use rand::Rng;
 
 pub struct Chip8 {
@@ -29,13 +28,13 @@ impl Chip8 {
 
         //  decode instruction from memory
 
-        let opcode = (instruction & 0x1000) as u16;
+        let opcode:u16 = (instruction & 0x1000) as u16;
 
-        let nnn = (instruction & 0x0FFF) as usize;
-        let kk = (instruction & 0x00FF) as u8;
-        let x = ((instruction >> 8) & 0x0F00) as usize;
-        let y = ((instruction >> 4) & 0x00F0) as usize;
-        let n = (instruction & 0x000F) as u8;
+        let nnn:usize = (instruction & 0x0FFF) as usize;
+        let kk:u8 = (instruction & 0x00FF) as u8;
+        let x:usize = ((instruction >> 8) & 0x0F00) as usize;
+        let y:usize = ((instruction >> 4) & 0x00F0) as usize;
+        let n:u8 = (instruction & 0x000F) as u8;
 
         //  execute
 
@@ -65,7 +64,7 @@ impl Chip8 {
 
             0x2000 => {
                 self.stack_pointer += 1;
-                self.stack[self.stack_pointer] = (self.program_counter as u16) ;
+                self.stack[self.stack_pointer] = self.program_counter as u16 ;
                 self.program_counter = nnn;
             },
 
@@ -190,9 +189,13 @@ impl Chip8 {
 
             0xD000 => {
 
-                // DISPLAY STUFF
-
-                self.program_counter += 2;
+                // let coordinates = (self.V[x], self.V[y]);
+                // let mut sprites = vec![0; n as usize].as_slice() as [&mut u8];
+                // for i in 0..n {
+                //     self.display_board[coordinates.x][coordinates.y] = self.display_board[coordinates.x][coordinates.y] ^ self.memory[self.I + i*8];
+                // }
+                //
+                // self.program_counter += 2;
             },
 
             0xE000 => {
