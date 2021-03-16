@@ -16,6 +16,15 @@ pub struct Chip8 {
 
 impl Chip8 {
 
+    // TODO:
+    fn draw_sprite(&mut self, n:usize, x: usize, y:usize) {
+        let mut sprites = vec![0; n].as_mut_slice();
+        for i in 0..n {
+            self.display_board[x][y] = self.display_board[x][y] ^ self.memory[self.I + i*8];
+        }
+
+    }
+
     fn fetch(&mut self) -> u16 {
 
         let mut instruction:u16 = self.memory[self.program_counter] as u16;
@@ -189,13 +198,8 @@ impl Chip8 {
 
             0xD000 => {
 
-                // let coordinates = (self.V[x], self.V[y]);
-                // let mut sprites = vec![0; n as usize].as_slice() as [&mut u8];
-                // for i in 0..n {
-                //     self.display_board[coordinates.x][coordinates.y] = self.display_board[coordinates.x][coordinates.y] ^ self.memory[self.I + i*8];
-                // }
-                //
-                // self.program_counter += 2;
+                self.draw_sprite(n as usize, self.V[x] as usize, self.V[y] as usize);
+                self.program_counter += 2;
             },
 
             0xE000 => {

@@ -12,7 +12,6 @@
     <list default="true" id="996b9c22-8243-4f5f-9ebf-13c3b181dc3c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chip8.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/chip8.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +82,7 @@
       <workItem from="1615887879041" duration="24000" />
       <workItem from="1615887922559" duration="2739000" />
       <workItem from="1615900508041" duration="2568000" />
-      <workItem from="1615905971383" duration="3230000" />
+      <workItem from="1615905971383" duration="4388000" />
     </task>
     <servers />
   </component>
