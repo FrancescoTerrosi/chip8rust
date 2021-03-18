@@ -21,13 +21,12 @@ impl Chip8 {
     */
 
     fn draw_sprite(&mut self, n:usize, x: usize, y:usize) {
-        let mut sprites = vec![0; n].as_mut_slice();
         let mut inverted_pixel:u8 = 0;
         for i in 0..n {
-            if self.display_board[x][y] == 1 && self.memory[self.I + i*8] == 1 {
+            if self.display_board[(x+i) % 64][(y+i) % 32] == 1 && self.memory[self.I as usize + i*8] == 1 {
                 inverted_pixel = 1;
             }
-            self.display_board[(x+i) % 64][(y+i) % 32] = self.display_board[(x+i) % 64][(y+i) % 32] ^ self.memory[self.I + i*8];
+            self.display_board[(x+i) % 64][(y+i) % 32] = self.display_board[(x+i) % 64][(y+i) % 32] ^ self.memory[self.I as usize + i*8];
         }
         self.V[0xF] = inverted_pixel;
     }
@@ -86,20 +85,23 @@ impl Chip8 {
 
             0x3000 => {
                 if self.V[x] == kk {
-                    self.program_counter += 4;
+                    self.program_counter += 2;
                 }
+                self.program_counter += 2;
             },
 
             0x4000 => {
                 if self.V[x] != kk {
-                    self.program_counter += 4;
+                    self.program_counter += 2;
                 }
+                self.program_counter += 2;
             },
 
             0x5000 => {
                 if self.V[x] == self.V[y] {
-                    self.program_counter += 4;
+                    self.program_counter += 2;
                 }
+                self.program_counter += 2;
             },
 
             0x6000 => {
@@ -184,8 +186,9 @@ impl Chip8 {
 
             0x9000 => {
                 if self.V[x] != self.V[y] {
-                    self.program_counter += 4;
+                    self.program_counter += 2;
                 }
+                self.program_counter += 2;
             },
 
             0xA000 => {
@@ -215,13 +218,16 @@ impl Chip8 {
 
                     0x009E => {
 
-                        // KEYBOARD STUFF
-
+                        if self.keyboard[self.V[x] as usize] == 1 {
+                            self.program_counter += 2;
+                        }
                         self.program_counter += 2;
                     },
 
                     0x00A1 => {
-                        // KEYBOARD STUFF
+                        if self.keyboard[self.V[x] as usize] != 1 {
+                            self.program_counter += 2;
+                        }
                         self.program_counter += 2;
                     },
 
@@ -242,9 +248,13 @@ impl Chip8 {
 
                     0x000A => {
 
-                        // wait for key press and do stuff
+                        for i in 0..self.keyboard.len() {
+                            if self.keyboard[i] == 1 {
+                                self.V[x] = self.keyboard[i];
+                                self.program_counter += 2;
+                            }
+                        }
 
-                        self.program_counter += 2;
                     },
 
                     0x0015 => {
@@ -266,21 +276,30 @@ impl Chip8 {
 
                     0x0029 => {
 
-                        // graphics stuff
+                        self.I = self.V[x].into();
 
                         self.program_counter += 2;
                     },
 
                     0x0033 => {
-                        // TODO
+                        self.memory[self.I as usize] = (x/100) as u8;
+                        self.memory[(self.I as usize) + 1] = ((x/10) % 10) as u8;
+                        self.memory[(self.I as usize) + 1] = (x % 10) as u8;
+                        self.program_counter += 2;
                     },
 
                     0x0055 => {
-                        // TODO
+                        for i in 0..x {
+                            self.memory[self.I as usize + i] = self.V[i];
+                        }
+                        self.program_counter += 2;
                     },
 
                     0x0065 => {
-                        // TODO
+                        for i in 0..x {
+                            self.V[i] = self.memory[self.I as usize + i];
+                        }
+                        self.program_counter += 2;
                     },
 
                     _ => {
