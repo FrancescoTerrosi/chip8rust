@@ -16,13 +16,20 @@ pub struct Chip8 {
 
 impl Chip8 {
 
-    // TODO:
+    /* TODO:
+    *   Check if this works
+    */
+
     fn draw_sprite(&mut self, n:usize, x: usize, y:usize) {
         let mut sprites = vec![0; n].as_mut_slice();
+        let mut inverted_pixel:u8 = 0;
         for i in 0..n {
-            self.display_board[x][y] = self.display_board[x][y] ^ self.memory[self.I + i*8];
+            if self.display_board[x][y] == 1 && self.memory[self.I + i*8] == 1 {
+                inverted_pixel = 1;
+            }
+            self.display_board[(x+i) % 64][(y+i) % 32] = self.display_board[(x+i) % 64][(y+i) % 32] ^ self.memory[self.I + i*8];
         }
-
+        self.V[0xF] = inverted_pixel;
     }
 
     fn fetch(&mut self) -> u16 {

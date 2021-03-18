@@ -56,11 +56,6 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Cargo.Run CHIP8" />
@@ -83,6 +78,7 @@
       <workItem from="1615887922559" duration="2739000" />
       <workItem from="1615900508041" duration="2568000" />
       <workItem from="1615905971383" duration="4388000" />
+      <workItem from="1616064364420" duration="579000" />
     </task>
     <servers />
   </component>
