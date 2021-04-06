@@ -11,7 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="996b9c22-8243-4f5f-9ebf-13c3b181dc3c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chip8.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/chip8.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +30,9 @@
   <component name="MacroExpansionManager">
     <option name="directoryName" value="vawkgifc" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1pplOAUkTx7u6go1mKKYVjefTPC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,6 +45,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RunManager">
     <configuration name="Run CHIP8" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
@@ -54,6 +61,11 @@
       <option name="redirectInputPath" value="" />
       <method v="2">
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
@@ -79,7 +91,10 @@
       <workItem from="1615900508041" duration="2568000" />
       <workItem from="1615905971383" duration="4388000" />
       <workItem from="1616064364420" duration="851000" />
-      <workItem from="1616065274408" duration="7468000" />
+      <workItem from="1616065274408" duration="7515000" />
+      <workItem from="1616753410987" duration="623000" />
+      <workItem from="1616764382564" duration="677000" />
+      <workItem from="1616769954668" duration="2409000" />
     </task>
     <servers />
   </component>

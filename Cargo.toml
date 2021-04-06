@@ -8,3 +8,14 @@ edition = "2018"
 
 [dependencies]
 rand = "0.8.3"
+glib-sys = ""
+
+
+[dependencies.gtk]
+version = ""
+features = ["v3_16"]
+
+
+[dependencies.gio]
+version = ""
+features = ["v2_44"]
